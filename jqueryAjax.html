@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Ajax com jQuery</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>jQuery Get/Post</h1>
+    <h1>Get</h1>
+    <div id="get"></div>
+    <h1>Post</h1>
+    <div id="post"></div>
+
+    <script>
+        function exibirResultado(id, dados) {
+            const texto = JSON.stringify(dados)
+            document.getElementById(id).innerHTML = texto
+        }
+
+        $.ajax({
+            url: 'parOuImpar',
+            data: {
+                numero: 5+5
+            },
+            success(data){
+                exibirResultado('get', data)
+            },
+            error(e){
+                exibirResultado('get', `${e['status']} - ${e['statusText']}`)
+                // exibirResultado('get', e['statusText'])
+            }
+
+        });
+
+        $.ajax({
+            url: 'formulario',
+            method: 'post',
+            data: {
+                nome: 'João',
+                sobrenome: 'Silva',
+                idade: 25
+            },
+            success(data){
+                exibirResultado('post', data)
+            },
+            error(e){
+                exibirResultado('post', `${e['status']} - ${e['statusText']}`)
+            }
+        })
+    </script>
+</body>
