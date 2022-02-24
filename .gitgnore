@@ -1,0 +1,12 @@
+/node_modules/*
+
+/spa/*
+
+/upload/*
+
+fetch1.html
+fetch2.html
+
+xmlHttpRequest1.html
+xmlHttpRequest2.html
+xmlHttpRequest3.html
